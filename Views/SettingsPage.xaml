@@ -1,0 +1,33 @@
+<Page
+    x:Class="WeatherPro.Views.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <StackPanel Padding="24" Spacing="20" MaxWidth="480" HorizontalAlignment="Left">
+
+        <StackPanel Spacing="4">
+            <TextBlock Text="Units" Style="{ThemeResource BodyStrongTextBlockStyle}" />
+            <ComboBox SelectedItem="{x:Bind ViewModel.Units, Mode=TwoWay}"
+                      ItemsSource="{x:Bind AllUnitSystems}" HorizontalAlignment="Stretch" />
+        </StackPanel>
+
+        <StackPanel Spacing="4">
+            <TextBlock Text="Theme" Style="{ThemeResource BodyStrongTextBlockStyle}" />
+            <ComboBox SelectedItem="{x:Bind ViewModel.Theme, Mode=TwoWay}"
+                      ItemsSource="{x:Bind AllThemes}" HorizontalAlignment="Stretch" />
+        </StackPanel>
+
+        <StackPanel Spacing="4">
+            <TextBlock Text="Weather Provider" Style="{ThemeResource BodyStrongTextBlockStyle}" />
+            <ComboBox SelectedValue="{x:Bind ViewModel.SelectedProviderKey, Mode=TwoWay}"
+                      SelectedValuePath="ProviderKey" DisplayMemberPath="DisplayName"
+                      ItemsSource="{x:Bind ViewModel.AvailableProviders}" HorizontalAlignment="Stretch" />
+        </StackPanel>
+
+        <StackPanel Spacing="4">
+            <TextBlock Text="Refresh Interval (minutes)" Style="{ThemeResource BodyStrongTextBlockStyle}" />
+            <NumberBox Value="{x:Bind ViewModel.RefreshIntervalMinutes, Mode=TwoWay}" Minimum="5" Maximum="180" SpinButtonPlacementMode="Inline" />
+        </StackPanel>
+
+    </StackPanel>
+</Page>
